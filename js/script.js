@@ -95,4 +95,13 @@ const correctLetters = function (guessedLetters) {
     }
     //console.log(showWord);
     wordInProgress.innerText = showWord.join("");
+    playerWon();
+};
+
+//Check to see if correct word guessed
+const playerWon = function () {
+    if (word.toUpperCase() === wordInProgress.innerText) {
+        message.classList.add("win");
+        message.innerHTML = `<p class = "highlight">You guessed the correct word! Congrats!</p>`;
+    }
 };
