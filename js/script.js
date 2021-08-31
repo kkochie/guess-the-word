@@ -15,7 +15,7 @@ const placeholder = function (word) {
     const placeholderLetters = [];
     for (const letter of word) {
         console.log(letter);
-        placeholderLetters.push("•");
+        placeholderLetters.push("●");
     }
     wordInProgress.innerText = placeholderLetters.join("");
 };
@@ -64,6 +64,7 @@ const makeGuess = function (guess) {
         guessedLetters.push(guess);
         console.log(guessedLetters);
         showGuessedLetters();
+        correctLetters(guessedLetters);
     }
     
 };
@@ -77,4 +78,21 @@ const showGuessedLetters = function () {
         li.innerText = letter;
         guessedLettersElement.append(li);
     }
+};
+
+//Update word in progress
+const correctLetters = function (guessedLetters) {
+    const wordUpper = word.toUpperCase();
+    const wordArray = wordUpper.split("");
+    //console.log(wordArray);
+    const showWord = [];
+    for (const letter of wordArray) {
+        if (guessedLetters.includes(letter)) {
+            showWord.push(letter.toUpperCase());
+        } else {
+            showWord.push("●");
+        }
+    }
+    //console.log(showWord);
+    wordInProgress.innerText = showWord.join("");
 };
